@@ -13,6 +13,7 @@ import com.ltonetwork.state.diffs.ENOUGH_AMT
 import com.ltonetwork.transaction._
 import com.ltonetwork.transaction.anchor.AnchorTransaction
 import com.ltonetwork.transaction.association.{AssociationTransaction, IssueAssociationTransaction, RevokeAssociationTransaction}
+import com.ltonetwork.transaction.claim.ClaimTransaction
 import com.ltonetwork.transaction.data.DataTransaction
 import com.ltonetwork.transaction.genesis.GenesisTransaction
 import com.ltonetwork.transaction.lease._
@@ -376,6 +377,18 @@ trait TransactionGenBase extends ScriptGen {
     fee = 15000000
     anchors = data.map(ByteStr(_))
   } yield AnchorTransaction.signed(version, timestamp, sender, fee, anchors).sponsorWith(sponsor).explicitGet()
+
+  def claimTransactionGen: Gen[ClaimTransaction] = versionGen(ClaimTransaction).flatMap(claimTransactionGen)
+  def claimTransactionGen(version: Byte): Gen[ClaimTransaction] = for {
+    sender <- accountGen
+    timestamp <- timestampGen
+    size <- Gen.choose(0, AnchorTransaction.MaxEntryCount)
+    len <- Gen.oneOf(AnchorTransaction.EntryLength)
+    data <- Gen.listOfN(size, genBoundedBytes(len, len))
+    sponsor <- sponsorGen(version)
+    fee = 15000000
+    anchors = data.map(ByteStr(_))
+  } yield ClaimTransaction.signed(version, timestamp, sender, fee, anchors).sponsorWith(sponsor).explicitGet()
 
   def issueAssocTransactionGen: Gen[IssueAssociationTransaction] = versionGen(IssueAssociationTransaction).flatMap(issueAssocTransactionGen)
   def issueAssocTransactionGen(version: Byte): Gen[IssueAssociationTransaction] = for {

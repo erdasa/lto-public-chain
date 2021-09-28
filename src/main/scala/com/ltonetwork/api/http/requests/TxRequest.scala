@@ -5,6 +5,7 @@ import com.ltonetwork.account.KeyTypes.keyType
 import com.ltonetwork.transaction.ValidationError.{GenericError, InvalidPublicKey}
 import com.ltonetwork.transaction.anchor.AnchorTransaction
 import com.ltonetwork.transaction.association.{IssueAssociationTransaction, RevokeAssociationTransaction}
+import com.ltonetwork.transaction.claim.ClaimTransaction
 import com.ltonetwork.transaction.data.DataTransaction
 import com.ltonetwork.transaction.lease.{CancelLeaseTransaction, LeaseTransaction}
 import com.ltonetwork.transaction.smart.SetScriptTransaction
@@ -83,6 +84,7 @@ object TxRequest {
       case Some(x) =>
         x match {
           case AnchorTransaction            => Right(jsv.as[AnchorRequest])
+          case ClaimTransaction             => Right(jsv.as[ClaimRequest])
           case IssueAssociationTransaction  => Right(jsv.as[IssueAssociationRequest])
           case RevokeAssociationTransaction => Right(jsv.as[RevokeAssociationRequest])
           case SponsorshipTransaction       => Right(jsv.as[SponsorshipRequest])

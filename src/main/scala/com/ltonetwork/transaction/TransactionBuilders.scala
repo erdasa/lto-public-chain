@@ -1,8 +1,8 @@
 package com.ltonetwork.transaction
 
-import com.google.common.primitives.Longs
 import com.ltonetwork.transaction.anchor.AnchorTransaction
 import com.ltonetwork.transaction.association.{IssueAssociationTransaction, RevokeAssociationTransaction}
+import com.ltonetwork.transaction.claim.ClaimTransaction
 import com.ltonetwork.transaction.data.DataTransaction
 import com.ltonetwork.transaction.genesis.GenesisTransaction
 import com.ltonetwork.transaction.lease.{CancelLeaseTransaction, LeaseTransaction}
@@ -30,7 +30,8 @@ object TransactionBuilders {
     IssueAssociationTransaction,
     RevokeAssociationTransaction,
     SponsorshipTransaction,
-    CancelSponsorshipTransaction
+    CancelSponsorshipTransaction,
+    ClaimTransaction
   ).map { x =>
     x.typeId -> x
   }(collection.breakOut)
