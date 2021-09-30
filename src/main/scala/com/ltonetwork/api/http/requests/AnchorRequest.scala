@@ -3,12 +3,9 @@ package com.ltonetwork.api.http.requests
 import cats.implicits._
 import com.ltonetwork.account.{PrivateKeyAccount, PublicKeyAccount}
 import com.ltonetwork.state.ByteStr
-import com.ltonetwork.transaction.ValidationError.GenericError
 import com.ltonetwork.transaction.anchor.AnchorTransaction
 import com.ltonetwork.transaction.{Proofs, ValidationError}
-import com.ltonetwork.utils.Time
-import com.ltonetwork.wallet.Wallet
-import play.api.libs.json.{Format, JsNumber, JsObject, Json, OWrites}
+import play.api.libs.json.{Format, JsObject, Json}
 
 case class AnchorRequest(version: Option[Byte] = None,
                          timestamp: Option[Long] = None,
