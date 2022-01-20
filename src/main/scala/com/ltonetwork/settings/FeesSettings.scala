@@ -37,4 +37,6 @@ object FeesSettings {
     // Support old application.conf settings
     types + ("lease-cancel" -> types("cancel-lease"), "sponsorship-cancel" -> types("cancel-sponsorship"))
   }
+
+  def empty: FeesSettings = FeesSettings(Map.empty[Byte, Seq[FeeSettings]])
 }
