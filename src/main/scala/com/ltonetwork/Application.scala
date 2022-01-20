@@ -16,6 +16,7 @@ import com.ltonetwork.consensus.nxt.api.http.NxtConsensusApiRoute
 import com.ltonetwork.db.{DBExt, openDB}
 import com.ltonetwork.database.Keys
 import com.ltonetwork.features.api.ActivationApiRoute
+import com.ltonetwork.fee.FeeCalculator
 import com.ltonetwork.history.{CheckpointServiceImpl, StorageFactory}
 import com.ltonetwork.http.{DebugApiRoute, NodeApiRoute}
 import com.ltonetwork.metrics.Metrics
