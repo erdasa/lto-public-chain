@@ -199,7 +199,8 @@ case class TransactionsApiRoute(settings: RestAPISettings,
     description = "Transaction data including type and optional timestamp in milliseconds",
     content = Array(
       new Content(
-        schema = new Schema(implementation = classOf[String]),
+        schema = new Schema(implementation = classOf[TxRequest.Tx]),
+        mediaType = "application/json",
       )),
     required = true
   )
@@ -233,7 +234,8 @@ case class TransactionsApiRoute(settings: RestAPISettings,
     description = "Transaction data including type and optional timestamp in milliseconds",
     content = Array(
       new Content(
-        schema = new Schema(implementation = classOf[String])
+        schema = new Schema(implementation = classOf[TxRequest.Tx]),
+        mediaType = "application/json",
       )),
     required = true
   )
@@ -267,7 +269,8 @@ case class TransactionsApiRoute(settings: RestAPISettings,
     description = "Transaction data including type and optional timestamp in milliseconds",
     content = Array(
       new Content(
-        schema = new Schema(implementation = classOf[String])
+        schema = new Schema(implementation = classOf[TxRequest.Tx]),
+        mediaType = "application/json",
       )),
     required = true
   )
@@ -295,7 +298,8 @@ case class TransactionsApiRoute(settings: RestAPISettings,
     description = "Transaction data including type and optional timestamp in milliseconds",
     content = Array(
       new Content(
-        schema = new Schema(implementation = classOf[String])
+        schema = new Schema(implementation = classOf[TxRequest.Tx]),
+        mediaType = "application/json",
       )),
     required = true
   )
@@ -329,7 +333,8 @@ case class TransactionsApiRoute(settings: RestAPISettings,
     description = "Transaction data including type and optional timestamp in milliseconds",
     content = Array(
       new Content(
-        schema = new Schema(implementation = classOf[String])
+        schema = new Schema(implementation = classOf[TxRequest.Tx]),
+        mediaType = "application/json",
       )),
     required = true
   )
@@ -357,7 +362,8 @@ case class TransactionsApiRoute(settings: RestAPISettings,
     description = "Transaction data including type and signature",
     content = Array(
       new Content(
-        schema = new Schema(implementation = classOf[String])
+        schema = new Schema(implementation = classOf[TxRequest.Tx]),
+        mediaType = "application/json",
       )),
     required = true
   )

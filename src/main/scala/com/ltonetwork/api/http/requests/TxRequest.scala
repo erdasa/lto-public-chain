@@ -14,6 +14,7 @@ import com.ltonetwork.transaction.transfer.{MassTransferTransaction, TransferTra
 import com.ltonetwork.transaction.{Transaction, TransactionBuilders, ValidationError}
 import com.ltonetwork.utils.Time
 import com.ltonetwork.wallet.Wallet
+import io.swagger.v3.oas.annotations.media.Schema
 import play.api.libs.json.JsObject
 
 trait TxRequest {
@@ -101,5 +102,18 @@ object TxRequest {
           case _                            => Left(GenericError(s"Unsupported transaction type ($typeId)"))
         }
     }
+  }
+
+  // Used for swagger
+  case class Tx(timestamp: Option[Long],
+                senderKeyType: Option[String],
+                senderPublicKey: Option[String],
+                sponsorKeyType: Option[String],
+                sponsorPublicKey: Option[String],
+               ) extends TxRequest {
+    override type TransactionT = Transaction
+
+    override protected def sign(tx: Transaction, signer: PrivateKeyAccount): Transaction = ???
+    override protected def toTxFrom(sender: PublicKeyAccount, sponsor: Option[PublicKeyAccount], time: Option[Time]): Either[ValidationError, Transaction] = ???
   }
 }
